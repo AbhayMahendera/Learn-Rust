@@ -80,5 +80,65 @@ Each Unsigned Variant can store values from 0 to 2^(n-1) -1
 Additionally, the isize and usize types depend on the architecture of the computer your program is running on, which is denoted in the table as “arch”: 64 bits if you’re on a 64-bit architecture and 32 bits if you’re on a 32-bit architecture.
 
 
-Integer Literals in Rust : 
+Integer Overflow :
+1. When compiling in debug mode , Rust includes check for integer overflow that cause your program to * panic * at run time.
+2. When compiling in release mode , Rust perform's two's compliment wrapping.
 */
+
+
+
+// Floating-Point Type - f32 & f64.
+
+fn main() {
+    let x = 2.0; // f64 | default in f64
+
+    let y: f32 = 3.0; // f32
+}
+
+
+// Boolean type - true / false | 1 byte in size
+
+fn main() {
+    let t = true;
+
+    let f: bool = false; // with explicit type annotation
+}
+
+
+// character type | char
+
+fn main() {
+    let c = 'z';
+    let z: char = 'ℤ'; // with explicit type annotation
+    let heart_eyed_cat = '😻';
+}
+
+
+
+// Compound types.
+
+
+// The tuple type :
+
+// Fixed Size , cant grow or shrink in size.
+
+fn main(){
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+
+    let (x, y, z) = tup;
+
+    println!("The value of y is: {y}");
+}
+
+// Also :
+fn main() {
+    let x: (i32, f64, u8) = (500, 6.4, 1);
+
+    let five_hundred = x.0;
+
+    let six_point_four = x.1;
+
+    let one = x.2;
+}
+
+// The tuple without any values has a special name, unit. This value and its corresponding type are both written () and represent an empty value or an empty return type. Expressions implicitly return the unit value if they don’t return any other value.
